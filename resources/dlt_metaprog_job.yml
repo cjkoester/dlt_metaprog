@@ -1,0 +1,41 @@
+resources:
+  jobs:
+    dlt_metaprog_job:
+      name: dlt_metaprog_job
+      job_clusters:
+        - job_cluster_key: Job_cluster
+          new_cluster:
+            spark_conf:
+              "spark.master": "local[*, 4]"
+              "spark.databricks.cluster.profile": "singleNode"
+            spark_env_vars:
+              PYSPARK_PYTHON: /databricks/python3/bin/python3
+            driver_node_type_id: Standard_D16ads_v5
+            spark_version: 14.3.x-scala2.12
+            enable_elastic_disk: true
+            data_security_mode: SINGLE_USER
+            runtime_engine: PHOTON
+            custom_tags:
+              "ResourceClass": "SingleNode"
+            azure_attributes:
+              first_on_demand: 1
+              spot_bid_max_price: -1
+              availability: ON_DEMAND_AZURE
+            node_type_id: Standard_D16ads_v5
+      tasks:
+        - task_key: create_src_data
+          notebook_task:
+            base_parameters:
+              catalog: "chris_koester"
+            notebook_path: ../src/create_src_data.py
+          new_cluster:
+            spark_version: 14.3.x-scala2.12
+            num_workers: 1
+            node_type_id: Standard_D16ads_v5
+        - task_key: dlt_metaprog_pipeline
+          depends_on:
+            - task_key: create_src_data
+          run_if: ALL_SUCCESS
+          pipeline_task:
+            pipeline_id: ${resources.pipelines.dlt_metaprog_pl.id}
+      max_concurrent_runs: 1
