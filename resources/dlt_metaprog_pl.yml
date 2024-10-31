@@ -1,0 +1,22 @@
+resources:
+  pipelines:
+    dlt_metaprog_pl:
+      name: dlt_metaprog_pl
+      target: dlt_metaprog_${bundle.environment}
+      clusters:
+        - num_workers: 1
+          label: default
+          custom_tags:
+            workload: dlt_metaprog
+        - custom_tags:
+            workload: dlt_metaprog
+          label: maintenance
+      libraries:
+        - notebook:
+            path: ../src/dlt_metaprog_notebook_01.ipynb
+      photon: true
+      catalog: ${var.pl_target_catalog}
+      channel: CURRENT
+      configuration:
+        bundle.sourcePath: /Workspace/${workspace.file_path}/src
+        metadata_batch: 1

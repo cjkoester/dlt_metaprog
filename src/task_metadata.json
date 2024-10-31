@@ -1,0 +1,67 @@
+[
+    {
+        "src_catalog": "chris_koester",
+        "src_schema": "dlt_metaprog",
+        "src_table": "src_table_1",
+        "tgt_table": "tgt_table_1",
+        "expectations": {
+            "valid_event_date": "event_date <> '2020-01-01'"
+        },
+        "batch": "1"
+    },
+    {
+        "src_catalog": "chris_koester",
+        "src_schema": "dlt_metaprog",
+        "src_table": "src_table_2",
+        "tgt_table": "tgt_table_2",
+        "expectations": {},
+        "batch": "1"
+    },
+    {
+        "src_catalog": "chris_koester",
+        "src_schema": "dlt_metaprog",
+        "src_table": "src_table_3",
+        "tgt_table": "tgt_table_3",
+        "expectations": {},
+        "batch": "1"
+    },
+    {
+        "src_catalog": "chris_koester",
+        "src_schema": "dlt_metaprog",
+        "src_table": "src_table_4",
+        "tgt_table": "tgt_table_4",
+        "expectations": {},
+        "batch": "1"
+    },    {
+        "src_catalog": "chris_koester",
+        "src_schema": "dlt_metaprog",
+        "src_table": "src_table_5",
+        "tgt_table": "tgt_table_5",
+        "expectations": {},
+        "batch": "2"
+    },
+    {
+        "src_catalog": "chris_koester",
+        "src_schema": "dlt_metaprog",
+        "src_table": "src_table_6",
+        "tgt_table": "tgt_table_6",
+        "expectations": {},
+        "batch": "2"
+    },
+    {
+        "src_catalog": "chris_koester",
+        "src_schema": "dlt_metaprog",
+        "src_table": "src_table_7",
+        "tgt_table": "tgt_table_7",
+        "expectations": {},
+        "batch": "2"
+    },
+    {
+        "src_catalog": "chris_koester",
+        "src_schema": "dlt_metaprog",
+        "src_table": "src_table_8",
+        "tgt_table": "tgt_table_8",
+        "expectations": {},
+        "batch": "2"
+    }
+]
